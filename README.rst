@@ -184,3 +184,35 @@ If an error arises, the output from ``grocsvs`` or the log files may be informat
 
 Please submit issues on the `github page for grocsvs <https://github.com/grocsvs/grocsvs/issues>`_.
 
+
+Notes for conda installation
+=============================
+**Make sure that you have Conda installed** (miniconda <https://docs.conda.io/en/latest/miniconda.html>)
+
+    conda create -n groc python=2.7
+
+    conda activate groc 
+
+    conda install -c conda-forge pygraphviz -y
+
+    conda install -c bioconda pybedtools tabix idba samtools bwa bwa-mem2 htslib -y
+
+**Clone the environment and then make sure to use the modified setup.py or change the requirement to networkx==2.0** 
+  
+    pip install . 
+
+
+**To pack the environment**
+
+    conda install conda-pack -y
+
+    conda-pack -n groc -o groc.tar
+
+**Copy and install the file**
+
+    tar xf /PATH/groc.tar -C /PATH/.conda/envs/groc/
+
+    conda activate or source /PATH/.conda/envs/groc/
+    
+    conda unpack
+
