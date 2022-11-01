@@ -1,6 +1,6 @@
 FROM python:2
 
-RUN apt-get update && apt-get install -y graphviz r-base r-base-dev
+RUN apt-get update && apt-get install -y graphviz r-base r-base-dev python-dev graphviz libgraphviz-dev pkg-config
 
 RUN wget https://github.com/grocsvs/idba/archive/1.1.3g1.tar.gz \
      && tar -xf 1.1.3g1.tar.gz \
@@ -26,9 +26,9 @@ RUN wget https://github.com/samtools/htslib/releases/download/1.3.2/htslib-1.3.2
      && cd htslib-1.3.2 \
      && make install
 
-RUN pip install -U pip
+RUN pip install -U pip==9.0.1
 
-RUN pip install -U rpy2
+RUN pip install -U rpy2==2.8.6
 
 RUN mkdir grocsvs_src && cd grocsvs_src \
      && wget https://github.com/grocsvs/grocsvs/archive/v0.2.6.1.tar.gz -O grocsvs.tar.gz \
